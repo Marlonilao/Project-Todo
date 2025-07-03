@@ -1,23 +1,22 @@
 import './styles.css';
-import Project from './logic.js';
-import { renderProjectLists, renderMainContent } from './dom.js';
+import { addProject } from "./dom.js"
 
-const main = document.getElementById('main')
-const projectsUl = document.getElementById('projects-ul')
-const inputProjectName = document.getElementById('project-name-input');
-const dialog = document.querySelector('body > dialog')
+const dialog = document.querySelector('dialog');
+const projectNameInput = document.getElementById('project-name-input')
 const addProjectBtn = document.getElementById('add-project-btn');
-addProjectBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const projectObj = new Project(inputProjectName.value)
-    localStorage.setItem(inputProjectName.value, JSON.stringify(projectObj));
-    renderProjectLists(projectsUl, main);
-    dialog.close();
-    document.querySelector('body > dialog > form').reset();
+const projectsUl = document.getElementById('projects-ul');
+const showDialogProjectBtn = document.getElementById('show-dialog-project-btn');
+const tasksContainer = document.getElementById('tasks-container');
+
+
+showDialogProjectBtn.addEventListener('click', e => {
+    dialog.showModal();
 })
 
-const showAddProjectBtn = document.getElementById('show-add-project-btn');
-showAddProjectBtn.addEventListener('click',(e)=>{
-    dialog.showModal();
+addProjectBtn.addEventListener('click',(e) => {
+    e.preventDefault;
+    addProject(projectNameInput.value);
+    dialog.close();
+    projectNameInput.value = "";
 })
 

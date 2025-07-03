@@ -8,23 +8,35 @@
 <body>
     <h1>Project ToDo</h1>
     <dialog>
-        <form>
-            <fieldset>
-                <label for="project-name-input">Add a project: <input type="text" name="project-name" id="project-name-input"></label>
-                <button id="add-project-btn">Add</button>
-            </fieldset>
-        </form>
+        <label for="project-name-input">Add a project: <input type="text" name="project-name" id="project-name-input"></label>
+        <button id="add-project-btn">Add</button>
     </dialog>
     <div id="sidenav" class="sidenav">
         <div id="project-container" class="project-container">
             <ul id="projects-ul">
+
             </ul>
         </div>
-        <button id="show-add-project-btn">Add Project</button>
+        <button id="show-dialog-project-btn">Add Project</button>
 
     </div>
-    <div id="main" class="main">
+    <div id="main-container" class="main-container">
+        <div id="tasks-container">
 
+        </div>
     </div>
+
+    <template id="project-li">
+        <div><li></li><button id="delete-project-btn">Delete</button></div>
+    </template>
+    <template id="main-content">
+            <input type="text" id="todo-description"><button id="add-task-btn">Add</button>
+            <ul id="tasks-ul" class="tasks-ul">
+                
+            </ul>
+    </template>
+    <template id="task-li">
+        <li><input type="checkbox" id="checkbox"><p id="task"></p><button id="delete-task-btn">Delete</button></li>
+    </template>
 </body>
 </html>
