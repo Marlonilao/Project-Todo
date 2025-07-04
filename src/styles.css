@@ -33,3 +33,7 @@ dialog {
     top: 50%;
     left: 50%;
 }
+
+.project-li {
+    display: inline;
+}

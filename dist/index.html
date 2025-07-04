@@ -14,23 +14,38 @@
     <div id="sidenav" class="sidenav">
         <div id="project-container" class="project-container">
             <ul id="projects-ul">
-
+                <!--project lists goes here-->
             </ul>
         </div>
         <button id="show-dialog-project-btn">Add Project</button>
 
     </div>
     <div id="main-container" class="main-container">
+        <h2 id="project-title"><!--Project Title goes here--></h2>
         <div id="tasks-container">
-
+            <!--tasks goes here-->
         </div>
     </div>
-
+    <dialog id="tasks-dialog">
+        <form>
+            <label>Title: </label>
+            <input type="text">
+            <label>Description:</label>
+            <input type="text">
+            <label>Due date:</label>
+            <input type="date">
+            <label>Priority</label>
+            <input type="radio" name="priority" value="Low"> 
+            <input type="radio" name="priority" value="Mid"> 
+            <input type="radio" name="priority" value="High"> 
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
     <template id="project-li">
-        <div><li></li><button id="delete-project-btn">Delete</button></div>
+        <div class="project-li-div"><li class="project-li"></li><button id="delete-project-btn">Delete</button></div>
     </template>
     <template id="main-content">
-            <input type="text" id="todo-description"><button id="add-task-btn">Add</button>
+            <button id="add-task-btn">Add Task</button>
             <ul id="tasks-ul" class="tasks-ul">
                 
             </ul>
