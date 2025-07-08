@@ -1,6 +1,6 @@
 import './styles.css';
 import { Project, addTaskToStorage } from "./logic.js"
-import { addProject, showMainContent } from "./dom.js"
+import { addProject, showMainContent, renderTasks } from "./dom.js"
 
 const dialog = document.querySelector('#projects-dialog');
 const projectNameInput = document.getElementById('project-name-input')
@@ -32,13 +32,9 @@ addProjectBtn.addEventListener('click',(e) => {
 const submitTaskBtn = document.querySelector('button[type="submit"]');
 submitTaskBtn.addEventListener('click',(e)=>{
     e.preventDefault;
-    console.log(title.value)
-    console.log(description.value)
-    console.log(dueDate.value)
-    // console.log(priority.value)
-    console.log(h2.innerText);
     addTaskToStorage({title: title.value, description: description.value, dueDate: dueDate.value});
     tasksDialog.close();
     document.querySelector('#tasks-dialog form').reset();
+    renderTasks();
 })
 
