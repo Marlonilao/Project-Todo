@@ -1,6 +1,6 @@
 import './styles.css';
 import { Project, addTaskToStorage } from "./logic.js"
-import { addProject, showMainContent, renderTasks } from "./dom.js"
+import { addProject, showMainContent, renderTasks, deleteTasks } from "./dom.js"
 
 const dialog = document.querySelector('#projects-dialog');
 const projectNameInput = document.getElementById('project-name-input')
@@ -22,9 +22,10 @@ showDialogProjectBtn.addEventListener('click', e => {
 
 addProjectBtn.addEventListener('click',(e) => {
     e.preventDefault;
-    addProject(projectNameInput.value);
-    const newProject = new Project(projectNameInput.value)
-    localStorage.setItem(projectNameInput.value, JSON.stringify(newProject));
+    const projectName = projectNameInput.value.trim();
+    addProject(projectName);
+    const newProject = new Project(projectName)
+    localStorage.setItem(projectName, JSON.stringify(newProject));
     dialog.close();
     projectNameInput.value = "";
 })
@@ -36,5 +37,5 @@ submitTaskBtn.addEventListener('click',(e)=>{
     tasksDialog.close();
     document.querySelector('#tasks-dialog form').reset();
     renderTasks();
+    deleteTasks();
 })
-

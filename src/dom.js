@@ -1,14 +1,24 @@
+import { deleteProject, deleteTaskFromStorage } from "./logic";
+
 function addProject(projectName) {
     const projectsUl = document.getElementById('projects-ul');
     const template = document.querySelector('#project-li');
     const clone = template.content.cloneNode(true);
     const li = clone.querySelector('li');
+    const deleteProjectButton = clone.querySelector('button');
     li.textContent = projectName;
     projectsUl.appendChild(clone);
-    li.addEventListener('click', () => {
+    li.addEventListener('click', (e) => {
+        console.log(e.target.innerText);
         showMainContent(projectName);
+        renderTasks();
     });
-    return clone;
+    deleteProjectButton.addEventListener('click',(e) => {
+        deleteProjectButton.parentElement.remove();
+        deleteProject(deleteProjectButton.previousElementSibling.innerText);
+        const mainContainer = document.getElementById('main-container');
+        mainContainer.innerHTML = "";
+    });
 }
 
 function showMainContent(projectName) {
@@ -42,7 +52,6 @@ function renderTasks(){
     const h2 = document.querySelector('#project-title');
     const tasksUl = document.getElementById('tasks-ul');
     const tasksLists = JSON.parse(localStorage.getItem(h2.innerText));
-    console.log(tasksLists.tasks);
     if (tasksUl.children.length > 0) {
             tasksUl.innerHTML = ""
     }
@@ -55,6 +64,19 @@ function renderTasks(){
     }
 }
 
+function deleteTasks(){
+    const tasks = document.querySelectorAll('#tasks-ul li');
+    tasks.forEach((task, index) => {
+        const para = task.children[1];
+        const deleteBtn = task.lastElementChild;
+        deleteBtn.addEventListener('click', (e) =>{
+            const match = para.textContent
+            deleteTaskFromStorage(match);
+            deleteBtn.parentElement.remove();
+        })
+    })
+}
 
 
-export { addProject, showMainContent, renderTasks }
+
+export { addProject, showMainContent, renderTasks, deleteTasks }
