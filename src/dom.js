@@ -16,8 +16,11 @@ function addProject(projectName) {
     deleteProjectButton.addEventListener('click',(e) => {
         deleteProjectButton.parentElement.remove();
         deleteProject(deleteProjectButton.previousElementSibling.innerText);
-        const mainContainer = document.getElementById('main-container');
-        mainContainer.innerHTML = "";
+        const h2 = document.getElementById('project-title');
+        h2.innerHTML = "";
+        const ul = document.getElementById('tasks-ul');
+        ul.innerHTML = "";
+        ul.previousElementSibling.remove();
     });
 }
 
