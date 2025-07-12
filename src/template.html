@@ -21,27 +21,37 @@
 
     </div>
     <div id="main-container" class="main-container">
-        <h2 id="project-title"></h2>
-        <div id="tasks-container">
-            <ul id="tasks-ul">
-                
-            </ul>
+        <div>
+            <h2 id="project-title"></h2>
+            <div id="tasks-container">
+                <!-- <ul id="tasks-ul">
+            
+                </ul> -->
+            </div>
         </div>
     </div>
     <dialog id="tasks-dialog">
         <form>
-            <label>Title: </label>
-            <input type="text" id="title">
-            <label>Description:</label>
-            <input type="text" id="description">
-            <label>Due date:</label>
-            <input type="date" id="due-date">
-            <p>Priority</p>
-            <label><input type="radio" name="priority" value="low">Low</label> 
-            <label><input type="radio" name="priority" value="mid">Mid</label>
-            <label><input type="radio" name="priority" value="high">High</label>
+            <div>
+                <label>Title: </label>
+                <input type="text" id="title">
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" id="description">
+            </div>
+            <div>
+                <label>Due date:</label>
+                <input type="date" id="due-date">
+            </div>
+            <fieldset>
+                <legend>Priority</legend>
+                <label><input type="radio" name="priority" value="low">Low</label>
+                <label><input type="radio" name="priority" value="mid">Mid</label>
+                <label><input type="radio" name="priority" value="high">High</label>
+            </fieldset>
         </form>
-         <button id="cancel-btn">Cancel</button> <button type="submit">Submit</button>
+         <div><button id="cancel-btn">Cancel</button> <button type="submit">Submit</button></div>
     </dialog>
 
     <template id="project-li">
@@ -58,7 +68,7 @@
     </template>
 
     <template id="task-li">
-        <li><input type="checkbox" id="checkbox"><p id="task-title"></p>
+        <li><span><input type="checkbox" id="checkbox"><p id="task-title"></p></span>
             <button id="delete-task-btn">Delete</button></li>
     </template>
 

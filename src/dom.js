@@ -14,13 +14,16 @@ function addProject(projectName) {
         renderTasks();
     });
     deleteProjectButton.addEventListener('click',(e) => {
-        deleteProjectButton.parentElement.remove();
-        deleteProject(deleteProjectButton.previousElementSibling.innerText);
+        e.target.parentElement.remove();
+        deleteProject(e.target.previousElementSibling.innerText);
         const h2 = document.getElementById('project-title');
         h2.innerHTML = "";
         const ul = document.getElementById('tasks-ul');
         ul.innerHTML = "";
-        ul.previousElementSibling.remove();
+        const ulPreviousElem = ul.previousElementSibling;
+        if (ulPreviousElem) {
+            ulPreviousElem.remove();
+        }
     });
 }
 
@@ -61,25 +64,31 @@ function renderTasks(){
     for (let i=0; i<tasksLists.tasks.length; i++) {
         const template = document.querySelector('#task-li');
         const clone = template.content.cloneNode(true);
-        const taskTitle = clone.querySelector('#task-title')
+        const taskTitle = clone.querySelector('#task-title');
+        const deleteTaskBtn = clone.querySelector('#delete-task-btn');
+        deleteTaskBtn.addEventListener('click', (e)=>{
+            const match = taskTitle.textContent;
+            deleteTaskFromStorage(match);
+            e.target.parentElement.remove();
+        })
         taskTitle.innerText = tasksLists.tasks[i].title;
         tasksUl.appendChild(clone);
     }
 }
 
-function deleteTasks(){
-    const tasks = document.querySelectorAll('#tasks-ul li');
-    tasks.forEach((task, index) => {
-        const para = task.children[1];
-        const deleteBtn = task.lastElementChild;
-        deleteBtn.addEventListener('click', (e) =>{
-            const match = para.textContent
-            deleteTaskFromStorage(match);
-            deleteBtn.parentElement.remove();
-        })
-    })
-}
+// function deleteTasks(){
+//     const tasks = document.querySelectorAll('#tasks-ul li');
+//     tasks.forEach((task, index) => {
+//         const para = task.children[1];
+//         const deleteBtn = task.lastElementChild;
+//         deleteBtn.addEventListener('click', (e) =>{
+//             const match = para.textContent
+//             deleteTaskFromStorage(match);
+//             e.target.parentElement.remove();
+//         })
+//     })
+// }
 
 
 
-export { addProject, showMainContent, renderTasks, deleteTasks }
+export { addProject, showMainContent, renderTasks }

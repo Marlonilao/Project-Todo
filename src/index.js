@@ -1,6 +1,6 @@
 import './styles.css';
 import { Project, addTaskToStorage } from "./logic.js"
-import { addProject, showMainContent, renderTasks, deleteTasks } from "./dom.js"
+import { addProject, showMainContent, renderTasks} from "./dom.js"
 
 const dialog = document.querySelector('#projects-dialog');
 const projectNameInput = document.getElementById('project-name-input')
@@ -37,5 +37,4 @@ submitTaskBtn.addEventListener('click',(e)=>{
     tasksDialog.close();
     document.querySelector('#tasks-dialog form').reset();
     renderTasks();
-    deleteTasks();
 })
