@@ -14,14 +14,19 @@ const description = document.querySelector('input[id="description"]');
 const dueDate = document.querySelector('input[id="due-date"]');
 const priority = document.querySelector('input[name="priority"]:checked');
 const h2 = document.querySelector('#project-title');
+const projectForm = document.querySelector('#projects-dialog >form');
 
 
 showDialogProjectBtn.addEventListener('click', e => {
     dialog.showModal();
 })
 
+projectForm.addEventListener('submit', e=>{
+    e.preventDefault();
+})
+
 addProjectBtn.addEventListener('click',(e) => {
-    e.preventDefault;
+    e.preventDefault();
     const projectName = projectNameInput.value.trim();
     addProject(projectName);
     const newProject = new Project(projectName)
@@ -30,11 +35,16 @@ addProjectBtn.addEventListener('click',(e) => {
     projectNameInput.value = "";
 })
 
-const submitTaskBtn = document.querySelector('button[type="submit"]');
+const submitTaskBtn = document.getElementById('submitTask');
 submitTaskBtn.addEventListener('click',(e)=>{
-    e.preventDefault;
-    addTaskToStorage({title: title.value, description: description.value, dueDate: dueDate.value});
-    tasksDialog.close();
-    document.querySelector('#tasks-dialog form').reset();
-    renderTasks();
+    e.preventDefault();
+    if (title.value || description.value || dueDate.value) {
+        addTaskToStorage({title: title.value, description: description.value, dueDate: dueDate.value});
+        tasksDialog.close();
+        document.querySelector('#tasks-dialog form').reset();
+        renderTasks();
+    } else {
+        alert('add task');
+        return;
+    }
 })

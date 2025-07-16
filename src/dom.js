@@ -20,8 +20,8 @@ function addProject(projectName) {
         h2.innerHTML = "";
         const ul = document.getElementById('tasks-ul');
         ul.innerHTML = "";
-        const ulPreviousElem = ul.previousElementSibling;
-        if (ulPreviousElem) {
+        if (ul.previousElementSibling) {
+            const ulPreviousElem = ul.previousElementSibling;
             ulPreviousElem.remove();
         }
     });
@@ -65,7 +65,9 @@ function renderTasks(){
         const template = document.querySelector('#task-li');
         const clone = template.content.cloneNode(true);
         const taskTitle = clone.querySelector('#task-title');
+        const checkbox = clone.querySelector('#checkbox');
         const deleteTaskBtn = clone.querySelector('#delete-task-btn');
+        const editTaskBtn = clone.querySelector('#edit-task-btn');
         deleteTaskBtn.addEventListener('click', (e)=>{
             const match = taskTitle.textContent;
             deleteTaskFromStorage(match);
@@ -73,21 +75,84 @@ function renderTasks(){
         })
         taskTitle.innerText = tasksLists.tasks[i].title;
         tasksUl.appendChild(clone);
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                taskTitle.classList.add('strikethrough')
+            } else {
+                taskTitle.classList.remove('strikethrough');
+            }
+        })
+        editTaskBtn.addEventListener('click', (e) => {
+            showDialogToEdit(e);
+        })
+
+    //     taskTitle.addEventListener('click', e => {
+    //         const titleInput = document.getElementById('title');
+    //         const descriptionInput = document.getElementById('description');
+    //         const dueDateInput = document.getElementById('due-date');
+    //         const match = taskTitle.textContent;
+    //         const data = localStorage.getItem(h2.innerText)
+    //         const parsedData = JSON.parse(data)
+    //         const index = parsedData.tasks.findIndex(task => task.title === match);
+    //         titleInput.value = parsedData.tasks[index].title;
+    //         descriptionInput.value = parsedData.tasks[index].description;
+    //         dueDateInput.value = parsedData.tasks[index].dueDate;
+
+    //         const tasksDialog = document.getElementById('tasks-dialog');
+    //         tasksDialog.showModal();
+
+    //         const submitTaskBtn = document.querySelector('#submitTask');
+    //         submitTaskBtn.innerText = 'Update';
+    //         submitTaskBtn.addEventListener('click', (e) => {
+    //             parsedData.tasks[index].title = titleInput.value;
+    //             parsedData.tasks[index].description = descriptionInput.value
+    //             parsedData.tasks[index].dueDate = dueDateInput.value;
+    //         })
+
+    //         const cancelBtn = document.getElementById('cancel-btn');
+    //         cancelBtn.addEventListener('click', (e) => {
+    //             e.preventDefault();
+    //             tasksDialog.close();
+    //             document.querySelector('#tasks-dialog form').reset()
+    //             submitTaskBtn.innerText = 'Submit';
+    //         })
+    //     })
     }
 }
 
-// function deleteTasks(){
-//     const tasks = document.querySelectorAll('#tasks-ul li');
-//     tasks.forEach((task, index) => {
-//         const para = task.children[1];
-//         const deleteBtn = task.lastElementChild;
-//         deleteBtn.addEventListener('click', (e) =>{
-//             const match = para.textContent
-//             deleteTaskFromStorage(match);
-//             e.target.parentElement.remove();
-//         })
-//     })
-// }
+function showDialogToEdit(e) {
+    const titleInput = document.getElementById('edit-title');
+    const descriptionInput = document.getElementById('edit-description');
+    const dueDateInput = document.getElementById('edit-due-date');
+    const span = e.target.previousElementSibling;
+    const para = span.lastElementChild;
+    const match = para.textContent;
+    const h2 = document.querySelector('#project-title')
+    const data = localStorage.getItem(h2.innerText)
+    const parsedData = JSON.parse(data)
+    const index = parsedData.tasks.findIndex(task => task.title === match);
+    titleInput.value = parsedData.tasks[index].title;
+    descriptionInput.value = parsedData.tasks[index].description;
+    dueDateInput.value = parsedData.tasks[index].dueDate;
+
+    const tasksDialog = document.getElementById('edit-tasks-dialog');
+    tasksDialog.showModal();
+
+    const updateTaskBtn = document.getElementById('updateTask')
+    updateTaskBtn.addEventListener('click', (e) => {
+        parsedData.tasks[index].title = titleInput.value;
+        parsedData.tasks[index].description = descriptionInput.value
+        parsedData.tasks[index].dueDate = dueDateInput.value;
+    })
+
+    const cancelBtn = document.getElementById('edit-cancel-btn');
+    cancelBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        tasksDialog.close();
+        document.querySelector('#edit-tasks-dialog form').reset()
+    })
+
+}
 
 
 

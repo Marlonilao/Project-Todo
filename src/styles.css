@@ -113,3 +113,11 @@ dialog {
     gap: 50px;
     padding: 10px 0;
 }
+
+#task-title {
+    cursor: pointer;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}

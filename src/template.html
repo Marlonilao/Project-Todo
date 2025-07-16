@@ -8,8 +8,10 @@
 <body>
     <h1>Project ToDo</h1>
     <dialog id="projects-dialog">
-        <label for="project-name-input">Add a project: <input type="text" name="project-name" id="project-name-input"></label>
-        <button id="add-project-btn">Add</button>
+        <form>
+            <label for="project-name-input">Add a project: <input type="text" name="project-name" id="project-name-input"></label>
+            <button type='submit' id="add-project-btn">Add</button>
+        </form>
     </dialog>
     <div id="sidenav" class="sidenav">
         <div id="project-container" class="project-container">
@@ -24,9 +26,9 @@
         <div>
             <h2 id="project-title"></h2>
             <div id="tasks-container">
-                <!-- <ul id="tasks-ul">
+                <ul id="tasks-ul">
             
-                </ul> -->
+                </ul>
             </div>
         </div>
     </div>
@@ -44,14 +46,31 @@
                 <label>Due date:</label>
                 <input type="date" id="due-date">
             </div>
-            <fieldset>
+            <!-- <fieldset>
                 <legend>Priority</legend>
                 <label><input type="radio" name="priority" value="low">Low</label>
                 <label><input type="radio" name="priority" value="mid">Mid</label>
                 <label><input type="radio" name="priority" value="high">High</label>
-            </fieldset>
+            </fieldset> -->
         </form>
-         <div><button id="cancel-btn">Cancel</button> <button type="submit">Submit</button></div>
+         <div><button id="cancel-btn">Cancel</button> <button type="submit" id="submitTask">Submit</button></div>
+    </dialog>
+    <dialog id="edit-tasks-dialog">
+        <form>
+            <div>
+                <label>Title: </label>
+                <input type="text" id="edit-title">
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" id="edit-description">
+            </div>
+            <div>
+                <label>Due date:</label>
+                <input type="date" id="edit-due-date">
+            </div>
+        </form>
+         <div><button id="edit-cancel-btn">Cancel</button> <button type="submit" id="updateTask">Update</button></div>
     </dialog>
 
     <template id="project-li">
@@ -69,7 +88,7 @@
 
     <template id="task-li">
         <li><span><input type="checkbox" id="checkbox"><p id="task-title"></p></span>
-            <button id="delete-task-btn">Delete</button></li>
+            <button id="edit-task-btn">Edit</button> <button id="delete-task-btn">Delete</button></li>
     </template>
 
 </body>
