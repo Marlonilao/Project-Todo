@@ -73,6 +73,22 @@
          <div><button id="edit-cancel-btn">Cancel</button> <button type="submit" id="updateTask">Update</button></div>
     </dialog>
 
+    <dialog id=show-task-details>
+        <button id="close-task-details">X</button>
+        <div>
+            <label>Title: </label>
+            <input type="text" id="show-title" readonly>
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" id="show-description" readonly>
+        </div>
+        <div>
+            <label>Due date:</label>
+            <input type="date" id="show-due-date" readonly>
+        </div>
+    </dialog>
+
     <template id="project-li">
         <div class="project-li-div">
             <li class="project-li"></li><button id="delete-project-btn">Delete</button>

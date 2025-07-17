@@ -86,37 +86,10 @@ function renderTasks(){
             showDialogToEdit(e);
         })
 
-    //     taskTitle.addEventListener('click', e => {
-    //         const titleInput = document.getElementById('title');
-    //         const descriptionInput = document.getElementById('description');
-    //         const dueDateInput = document.getElementById('due-date');
-    //         const match = taskTitle.textContent;
-    //         const data = localStorage.getItem(h2.innerText)
-    //         const parsedData = JSON.parse(data)
-    //         const index = parsedData.tasks.findIndex(task => task.title === match);
-    //         titleInput.value = parsedData.tasks[index].title;
-    //         descriptionInput.value = parsedData.tasks[index].description;
-    //         dueDateInput.value = parsedData.tasks[index].dueDate;
+        taskTitle.addEventListener('click' , (e) => {
+            showDialog(e);
+        })
 
-    //         const tasksDialog = document.getElementById('tasks-dialog');
-    //         tasksDialog.showModal();
-
-    //         const submitTaskBtn = document.querySelector('#submitTask');
-    //         submitTaskBtn.innerText = 'Update';
-    //         submitTaskBtn.addEventListener('click', (e) => {
-    //             parsedData.tasks[index].title = titleInput.value;
-    //             parsedData.tasks[index].description = descriptionInput.value
-    //             parsedData.tasks[index].dueDate = dueDateInput.value;
-    //         })
-
-    //         const cancelBtn = document.getElementById('cancel-btn');
-    //         cancelBtn.addEventListener('click', (e) => {
-    //             e.preventDefault();
-    //             tasksDialog.close();
-    //             document.querySelector('#tasks-dialog form').reset()
-    //             submitTaskBtn.innerText = 'Submit';
-    //         })
-    //     })
     }
 }
 
@@ -140,9 +113,14 @@ function showDialogToEdit(e) {
 
     const updateTaskBtn = document.getElementById('updateTask')
     updateTaskBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         parsedData.tasks[index].title = titleInput.value;
         parsedData.tasks[index].description = descriptionInput.value
         parsedData.tasks[index].dueDate = dueDateInput.value;
+        localStorage.setItem(h2.innerText, JSON.stringify(parsedData));
+        renderTasks();
+        tasksDialog.close();
+        // document.querySelector('#edit-tasks-dialog > form').reset();
     })
 
     const cancelBtn = document.getElementById('edit-cancel-btn');
@@ -152,6 +130,28 @@ function showDialogToEdit(e) {
         document.querySelector('#edit-tasks-dialog form').reset()
     })
 
+}
+
+function showDialog(e){
+    const dialog = document.getElementById('show-task-details');
+    const titleInput = document.getElementById('show-title');
+    const descriptionInput = document.getElementById('show-description');
+    const dueDateInput = document.getElementById('show-due-date');
+    const match = e.target.innerText;
+    const h2 = document.querySelector('#project-title')
+    const data = localStorage.getItem(h2.innerText)
+    const parsedData = JSON.parse(data)
+    const index = parsedData.tasks.findIndex(task => task.title === match);
+    titleInput.value = parsedData.tasks[index].title;
+    descriptionInput.value = parsedData.tasks[index].description;
+    dueDateInput.value = parsedData.tasks[index].dueDate;    
+
+    dialog.show();
+
+    const closeBtn = document.getElementById('close-task-details');
+    closeBtn.addEventListener('click' , (e) => {
+        dialog.close();
+    })
 }
 
 
