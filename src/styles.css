@@ -2,7 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    outline: 1px solid #e0e0e0;
+    /* outline: 1px solid #e0e0e0; */
 }
 
 body {
@@ -17,12 +17,14 @@ h1 {
     text-align: center;
     line-height: 2;
     grid-column-start: span 2;
+    border-bottom: 1px solid black;
 }
 
 .sidenav {
     grid-row-start: 2;
     display: grid;
     grid-template-rows: 90% 10%;
+    border-right: 1px solid black;
 }
 
 dialog {
@@ -57,7 +59,7 @@ dialog {
 
 #tasks-container > button {
     width: 200px;
-    margin: 0 auto;
+    margin: 8px auto;
     display: block;
 }
 
@@ -120,4 +122,17 @@ dialog {
 
 .strikethrough {
     text-decoration: line-through;
+}
+
+#task-title {
+    width: 200px;
+}
+
+#edit-task-btn {
+    position: relative;
+    left: 180px;
+}
+
+li {
+    margin-bottom: 8px;
 }

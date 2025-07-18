@@ -48,3 +48,10 @@ submitTaskBtn.addEventListener('click',(e)=>{
         return;
     }
 })
+
+if (localStorage.length > 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        addProject(key);
+    }
+}
