@@ -1,138 +1,138 @@
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    /* outline: 1px solid #e0e0e0; */
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  /* outline: 1px solid #e0e0e0; */
 }
 
 body {
-    position:relative;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 10% 90%;
+  position: relative;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 10% 90%;
 }
 
 h1 {
-    text-align: center;
-    line-height: 2;
-    grid-column-start: span 2;
-    border-bottom: 1px solid black;
+  text-align: center;
+  line-height: 2;
+  grid-column-start: span 2;
+  border-bottom: 1px solid black;
 }
 
 .sidenav {
-    grid-row-start: 2;
-    display: grid;
-    grid-template-rows: 90% 10%;
-    border-right: 1px solid black;
+  grid-row-start: 2;
+  display: grid;
+  grid-template-rows: 90% 10%;
+  border-right: 1px solid black;
 }
 
 dialog {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .project-li {
-    display: inline;
-    width: 150px;
-    cursor: pointer;
+  display: inline;
+  width: 150px;
+  cursor: pointer;
 }
 
 .project-li-div {
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
 }
 
 .main-container {
-    position: relative;
+  position: relative;
 }
 
 .main-container > div {
-    width: 700px;
-    position: absolute;
-    left: 10%;
-    top: 20%;
+  width: 700px;
+  position: absolute;
+  left: 10%;
+  top: 20%;
 }
 
 #tasks-container > button {
-    width: 200px;
-    margin: 8px auto;
-    display: block;
+  width: 200px;
+  margin: 8px auto;
+  display: block;
 }
 
 #tasks-container {
-    width: 100%;
-    height: 400px;
+  width: 100%;
+  height: 400px;
 }
 
 #project-title {
-    text-align: center;
+  text-align: center;
 }
 
 #tasks-ul li {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 #tasks-ul li > span {
-    display: flex;
+  display: flex;
 }
 
 #tasks-ul li > span > input {
-    margin: 5px 8px;
+  margin: 5px 8px;
 }
 
 #tasks-dialog {
-    width: 350px;
+  width: 350px;
 }
 #tasks-dialog > form div {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
-#tasks-dialog > form div > label{
-    display: inline-block;
-    width: 100px;
+#tasks-dialog > form div > label {
+  display: inline-block;
+  width: 100px;
 }
 
 #tasks-dialog > form div > input {
-    width: 230px;
+  width: 230px;
 }
 
 #tasks-dialog > form > fieldset {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 10px 0;
 }
 
 #tasks-dialog > div {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px 0;
 }
 
 #task-title {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .strikethrough {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 #task-title {
-    width: 200px;
+  width: 200px;
 }
 
 #edit-task-btn {
-    position: relative;
-    left: 180px;
+  position: relative;
+  left: 180px;
 }
 
 li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }

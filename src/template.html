@@ -1,111 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project-ToDO</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Project ToDo</h1>
     <dialog id="projects-dialog">
-        <form>
-            <label for="project-name-input">Add a project: <input type="text" name="project-name" id="project-name-input"></label>
-            <button type='submit' id="add-project-btn">Add</button>
-        </form>
+      <form>
+        <label for="project-name-input"
+          >Add a project:
+          <input type="text" name="project-name" id="project-name-input"
+        /></label>
+        <button type="submit" id="add-project-btn">Add</button>
+      </form>
     </dialog>
     <div id="sidenav" class="sidenav">
-        <div id="project-container" class="project-container">
-            <ul id="projects-ul">
-                <!--project lists goes here-->
-            </ul>
-        </div>
-        <button id="show-dialog-project-btn">Add Project</button>
-
+      <div id="project-container" class="project-container">
+        <ul id="projects-ul">
+          <!--project lists goes here-->
+        </ul>
+      </div>
+      <button id="show-dialog-project-btn">Add Project</button>
     </div>
     <div id="main-container" class="main-container">
-        <div>
-            <h2 id="project-title"></h2>
-            <div id="tasks-container">
-                <ul id="tasks-ul">
-            
-                </ul>
-            </div>
+      <div>
+        <h2 id="project-title"></h2>
+        <div id="tasks-container">
+          <ul id="tasks-ul"></ul>
         </div>
+      </div>
     </div>
     <dialog id="tasks-dialog">
-        <form>
-            <div>
-                <label>Title: </label>
-                <input type="text" id="title">
-            </div>
-            <div>
-                <label>Description:</label>
-                <input type="text" id="description">
-            </div>
-            <div>
-                <label>Due date:</label>
-                <input type="date" id="due-date">
-            </div>
-            <!-- <fieldset>
+      <form>
+        <div>
+          <label>Title: </label>
+          <input type="text" id="title" />
+        </div>
+        <div>
+          <label>Description:</label>
+          <input type="text" id="description" />
+        </div>
+        <div>
+          <label>Due date:</label>
+          <input type="date" id="due-date" />
+        </div>
+        <!-- <fieldset>
                 <legend>Priority</legend>
                 <label><input type="radio" name="priority" value="low">Low</label>
                 <label><input type="radio" name="priority" value="mid">Mid</label>
                 <label><input type="radio" name="priority" value="high">High</label>
             </fieldset> -->
-        </form>
-         <div><button id="cancel-btn">Cancel</button> <button type="submit" id="submitTask">Submit</button></div>
+      </form>
+      <div>
+        <button id="cancel-btn">Cancel</button>
+        <button type="submit" id="submitTask">Submit</button>
+      </div>
     </dialog>
     <dialog id="edit-tasks-dialog">
-        <form>
-            <div>
-                <label>Title: </label>
-                <input type="text" id="edit-title">
-            </div>
-            <div>
-                <label>Description:</label>
-                <input type="text" id="edit-description">
-            </div>
-            <div>
-                <label>Due date:</label>
-                <input type="date" id="edit-due-date">
-            </div>
-        </form>
-         <div><button id="edit-cancel-btn">Cancel</button> <button type="submit" id="updateTask">Update</button></div>
+      <form>
+        <div>
+          <label>Title: </label>
+          <input type="text" id="edit-title" />
+        </div>
+        <div>
+          <label>Description:</label>
+          <input type="text" id="edit-description" />
+        </div>
+        <div>
+          <label>Due date:</label>
+          <input type="date" id="edit-due-date" />
+        </div>
+      </form>
+      <div>
+        <button id="edit-cancel-btn">Cancel</button>
+        <button type="submit" id="updateTask">Update</button>
+      </div>
     </dialog>
 
-    <dialog id=show-task-details>
-        <button id="close-task-details">X</button>
-        <div>
-            <label>Title: </label>
-            <input type="text" id="show-title" readonly>
-        </div>
-        <div>
-            <label>Description:</label>
-            <input type="text" id="show-description" readonly>
-        </div>
-        <div>
-            <label>Due date:</label>
-            <input type="date" id="show-due-date" readonly>
-        </div>
+    <dialog id="show-task-details">
+      <button id="close-task-details">X</button>
+      <div>
+        <label>Title: </label>
+        <input type="text" id="show-title" readonly />
+      </div>
+      <div>
+        <label>Description:</label>
+        <input type="text" id="show-description" readonly />
+      </div>
+      <div>
+        <label>Due date:</label>
+        <input type="date" id="show-due-date" readonly />
+      </div>
     </dialog>
 
     <template id="project-li">
-        <div class="project-li-div">
-            <li class="project-li"></li><button id="delete-project-btn">Delete</button>
-        </div>
+      <div class="project-li-div">
+        <li class="project-li"></li>
+        <button id="delete-project-btn">Delete</button>
+      </div>
     </template>
 
     <template id="main-content">
-            <button id="add-task-btn">Add Task</button>
-            <ul id="tasks-ul" class="tasks-ul">
-                
-            </ul>
+      <button id="add-task-btn">Add Task</button>
+      <ul id="tasks-ul" class="tasks-ul"></ul>
     </template>
 
     <template id="task-li">
-        <li><span><input type="checkbox" id="checkbox"><p id="task-title"></p></span>
-            <button id="edit-task-btn">Edit</button> <button id="delete-task-btn">Delete</button></li>
+      <li>
+        <span
+          ><input type="checkbox" id="checkbox" />
+          <p id="task-title"></p
+        ></span>
+        <button id="edit-task-btn">Edit</button>
+        <button id="delete-task-btn">Delete</button>
+      </li>
     </template>
-
-</body>
+  </body>
 </html>

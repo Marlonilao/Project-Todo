@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/Marlonilao/Project-Todo#readme",
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
     "html-webpack-plugin": "^5.6.3",
+    "prettier": "3.6.2",
     "style-loader": "^4.0.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
